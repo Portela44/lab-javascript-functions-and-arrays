@@ -223,7 +223,7 @@ function maxRowProduct(matrix,rowIndex,columnIndex) {
   if(rowIndex-3 >= 0) {
     backwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex-1][columnIndex]*matrix[rowIndex-2][columnIndex]*matrix[rowIndex-3][columnIndex];
   }
-  if(rowIndex+3 < matrix.length-1) {
+  if(rowIndex+3 < matrix.length) {
     forwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex+1][columnIndex]*matrix[rowIndex+2][columnIndex]*matrix[rowIndex+3][columnIndex];
   }
   return (Math.max(backwardTest, forwardTest));
@@ -236,7 +236,7 @@ function maxColumnProduct(matrix,rowIndex,columnIndex) {
   if(columnIndex-3 >= 0) {
     backwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex][columnIndex-1]*matrix[rowIndex][columnIndex-2]*matrix[rowIndex][columnIndex-3];
   }
-  if(columnIndex+3 <= matrix[rowIndex].length-1) {
+  if(columnIndex+3 < matrix[rowIndex].length) {
     forwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex][columnIndex+1]*matrix[rowIndex][columnIndex+2]*matrix[rowIndex][columnIndex+3];
   }
   return (Math.max(backwardTest, forwardTest));
