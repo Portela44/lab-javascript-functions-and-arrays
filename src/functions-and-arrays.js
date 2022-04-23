@@ -132,19 +132,34 @@ const wordsUnique = [
   'poison',
   'communion',
   'simple',
+  'simple',
+  'simple',
+  'simple',
   'bring'
 ];
 
-function uniquifyArray() {}
 
+function uniquifyArray(wordArr) {
+  filteredArr = [];
+  for(let i = 0; i < wordArr.length; i++) {
+    if(wordArr.indexOf(wordArr[i],i) === wordArr.lastIndexOf(wordArr[i])) {
+      filteredArr.push(wordArr[i]);
+    }
+  }
+  return(filteredArr)
+}
+
+console.log(uniquifyArray(wordsUnique));
 
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
-
-
+function doesWordExist(wordArr, word) {
+  return(wordArr.includes(word));
+}
+  
+console.log(doesWordExist(wordsFind, "trouble"));
 
 // Iteration #7: Count repetition
 const wordsCount = [
