@@ -132,9 +132,6 @@ const wordsUnique = [
   'poison',
   'communion',
   'simple',
-  'simple',
-  'simple',
-  'simple',
   'bring'
 ];
 
@@ -176,7 +173,23 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(wordArr, word) {
+  counter = 0;
+  for(let i = 0; i < wordArr.length; i++) {
+    if(wordArr.indexOf(word,i) === wordArr.lastIndexOf(word)) {
+      counter++;
+      break;
+    } else {
+      if(word === wordArr[i]) {
+      counter++
+      }
+    }
+  }
+  return(counter)
+}
+
+console.log(howManyTimes(wordsCount, "matter"));
+
 
 
 
@@ -201,10 +214,49 @@ const matrix = [
   [4, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 8, 46, 29, 32, 40, 62, 76, 36],
   [20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 4, 36, 16],
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
-  [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
+  [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 10, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {}
+function maxRowProduct(matrix,rowIndex,columnIndex) {
+  backwardTest = 0;
+  forwardTest = 0;
+  if(rowIndex-3 >= 0) {
+    backwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex-1][columnIndex]*matrix[rowIndex-2][columnIndex]*matrix[rowIndex-3][columnIndex];
+  }
+  if(rowIndex+3 < matrix.length-1) {
+    forwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex+1][columnIndex]*matrix[rowIndex+2][columnIndex]*matrix[rowIndex+3][columnIndex];
+  }
+  return (Math.max(backwardTest, forwardTest));
+}
+
+
+function maxColumnProduct(matrix,rowIndex,columnIndex) {
+  backwardTest = 0;
+  forwardTest = 0;
+  if(columnIndex-3 >= 0) {
+    backwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex][columnIndex-1]*matrix[rowIndex][columnIndex-2]*matrix[rowIndex][columnIndex-3];
+  }
+  if(columnIndex+3 <= matrix[rowIndex].length-1) {
+    forwardTest = matrix[rowIndex][columnIndex]*matrix[rowIndex][columnIndex+1]*matrix[rowIndex][columnIndex+2]*matrix[rowIndex][columnIndex+3];
+  }
+  return (Math.max(backwardTest, forwardTest));
+}
+
+
+function greatestProduct(matrix) {
+  let currentMaxRowProduct = 0
+  let currentMaxColumnProduct = 0
+  for(let i = 0; i<matrix.length; i++){
+    for(let j = 0; j<matrix[i].length; j++) {
+      currentMaxRowProduct = Math.max(currentMaxRowProduct,maxRowProduct(matrix,i,j));
+      currentMaxColumnProduct= Math.max(currentMaxColumnProduct, maxColumnProduct(matrix,i,j));
+    }
+  }
+  return (Math.max(currentMaxRowProduct, currentMaxColumnProduct));
+}
+
+console.log(greatestProduct(matrix))
+
 
 
 
