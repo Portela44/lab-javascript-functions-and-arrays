@@ -16,7 +16,7 @@ const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard',
 function findLongestWord(wordArr) {
   let longestWord = wordArr[0];
   if (wordArr === []) {
-    return "Hey! I have no words to work with!"
+    console.log("Hey! I have no words to work with!");
   } else {
     for(let word of wordArr) {
       if(longestWord.length < word.length) {
@@ -34,14 +34,51 @@ console.log(findLongestWord(words));
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numberArr) {
-  
+  let totalNumber = 0;
+  if(numberArr === []) {
+    console.log("Hey! I have no numbers to work with");
+  } else {
+    for(let number of numberArr){
+      if(typeof number !== "number") {
+        console.log("Hey! there is something down here that is not a number, be careful!");
+      } else {
+        totalNumber += number;
+      }
+    }
+  }
+  return totalNumber;
 }
 
+console.log(sumNumbers(numbers));
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
+function sum(randomArr) {
+  let totalNumber = 0;
+  if(randomArr === []) {
+    console.log("Hey! I have nothing to work with");
+  } else {
+    for(let item of randomArr){
+      if(typeof item === "number") {
+        totalNumber += item;
+      } else if(typeof item === "string") {
+        totalNumber += item.length;
+      } else if(typeof item === "boolean") {
+        if(item === true) {
+        totalNumber +=1;
+        } else {
+        }
+      } else {
+        console.log("Hey! there is something more than numbers, strings and booleans down here! BE CAREFUL!");
+      }
+    }
+  }
+  return totalNumber;
+}
+
+console.log(sum(mixedArr));
 
 
 // Iteration #4: Calculate the average
