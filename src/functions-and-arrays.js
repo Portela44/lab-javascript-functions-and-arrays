@@ -4,18 +4,18 @@ function maxOfTwoNumbers(num1, num2) {
     return num1;
   } else if (num2 > num1) {
     return num2;
-  } else {
-    console.log("They are the same!")
+  } else if (num2 === num1) {
+    console.log("They are the same number!")
+    return num2;
   }
 }
-
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
 function findLongestWord(wordArr) {
   let longestWord = wordArr[0];
-  if (wordArr === []) {
+  if (wordArr.length === 0) {
     console.log("Hey! I have no words to work with!");
   } else {
     for(let word of wordArr) {
@@ -35,7 +35,7 @@ const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
 function sumNumbers(numberArr) {
   let totalNumber = 0;
-  if(numberArr === []) {
+  if(numberArr.length === 0) {
     console.log("Hey! I have no numbers to work with");
   } else {
     for(let number of numberArr){
@@ -57,7 +57,7 @@ const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 
 function sum(randomArr) {
   let totalNumber = 0;
-  if(randomArr === []) {
+  if(randomArr.length === 0) {
     console.log("Hey! I have nothing to work with");
   } else {
     for(let item of randomArr){
@@ -85,16 +85,40 @@ console.log(sum(mixedArr));
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(numberArr) {
+  if(numberArr.length === 0) {
+    console.log("Hey! I have no numbers to work with");
+  } else {
+    return (sumNumbers(numberArr)/numberArr.length);
+  }
+}
+
+console.log(averageNumbers(numbersAvg));
 
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(stringArr) { 
+  if(stringArr.length === 0) {
+    console.log("Hey! I have no words to work with");
+  } else {
+    return (sum(stringArr)/stringArr.length);
+  }
+}
+
+console.log(averageWordLength(wordsArr));
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(randomArr) {
+  if(mixedArr.length === 0) {
+    console.log("Hey! I have no words to work with");
+  } else {
+    return (sum(randomArr)/randomArr.length);
+  }
+}
+
+console.log(avg(mixedArr));
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
